@@ -18,3 +18,8 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 ```
 
 - 国内安装方式
+
+由于从github上clone很慢, 使用[ghproxy](https://ghproxy.com/)加速, 修改`get-poetry.py`后, 执行
+```shell script
+python get-poetry.py
+```
