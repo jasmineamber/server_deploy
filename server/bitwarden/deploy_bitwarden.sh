@@ -11,7 +11,7 @@ if [[ ! -z "$env" && $env == "china" ]]; then
   #  配置 docker registry-mirrors
   wget ${GH_URL}${DOCKER_DAEMON} -O /etc/docker/daemon.json
   #  duplicacy 下载地址
-  RELEASE_DUPLICACY=${GH_URL}${REALSE_DUPLICACY}
+  RELEASE_DUPLICACY=${GH_URL}${RELEASE_DUPLICACY}
   # docker compose 配置文件
   DOCKER_COMPOSE=${GH_URL}${DOCKER_COMPOSE}
 fi
