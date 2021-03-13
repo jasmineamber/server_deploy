@@ -33,6 +33,9 @@ echo ${onetoken_file} | duplicacy init bitwarden one://Bitwarden
 # 配置duplicacy排除文件
 echo "-icon_cache/" >.duplicacy/filters
 
+# 让duplicacy记住token路径
+duplicacy set -key one_token -value ${onetoken_file}
+
 # 恢复数据
 duplicacy list | awk 'END{print $4}' | xargs duplicacy restore -r
 
