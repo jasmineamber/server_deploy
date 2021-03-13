@@ -9,11 +9,11 @@ DOCKER_DAEMON="https://raw.githubusercontent.com/jasmineamber/server_deploy/mast
 
 if [ [ ! -z $env && $env == 'china'] ]; then
   #  配置 docker registry-mirrors
-  wget GH_URL+DOCKER_DAEMON -O /etc/docker/daemon.json
+  wget ${GH_URL}+${DOCKER_DAEMON} -O /etc/docker/daemon.json
   #  duplicacy 下载地址
-  RELEASE_DUPLICACY=GH_URL+REALSE_DUPLICACY
+  RELEASE_DUPLICACY=${GH_URL}+${REALSE_DUPLICACY}
   # docker compose 配置文件
-  DOCKER_COMPOSE=GH_URL+DOCKER_COMPOSE
+  DOCKER_COMPOSE=${GH_URL}+${DOCKER_COMPOSE}
 fi
 
 # 下载duplicacy
@@ -22,7 +22,7 @@ chmod +x /usr/bin/duplicacy
 
 # 配置onedriver token
 read -p "please input onedrive token: " onetoken
-echo $onetoken > one-token.json
+echo $onetoken >one-token.json
 
 # 初始化duplicacy
 mkdir bw-data
@@ -30,7 +30,7 @@ cd bw-data
 duplicacy init bitwarden one://Bitwarden
 
 # 配置duplicacy排除文件
-echo "-icon_cache/" > .duplicacy/filters
+echo "-icon_cache/" >.duplicacy/filters
 
 # 恢复数据
 duplicacy list | awk 'END{print $4}' | xargs duplicacy restore -r
@@ -39,12 +39,7 @@ duplicacy list | awk 'END{print $4}' | xargs duplicacy restore -r
 cd ..
 
 # 下载docker配置文件
-wget DOCKER_COMPOSE
+wget ${DOCKER_COMPOSE}
 
 # 启动docker
 docker-compose up -d
-
-
-
-
-
