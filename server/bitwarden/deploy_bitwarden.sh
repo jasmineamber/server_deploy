@@ -28,7 +28,11 @@ echo $onetoken >${onetoken_file}
 # 初始化duplicacy
 mkdir bw-data
 cd bw-data
-echo ${onetoken_file} | duplicacy init bitwarden one://Bitwarden
+if echo ${onetoken_file} | duplicacy init bitwarden one://Bitwarden; then
+  echo "duplicacy init success"
+else
+  exit
+fi
 
 # 配置duplicacy排除文件
 echo "-icon_cache/" >.duplicacy/filters
