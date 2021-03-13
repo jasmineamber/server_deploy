@@ -1,6 +1,6 @@
 #!/bin/bash
 
-env=$1
+env="$1"
 
 RELEASE_DUPLICACY="https://github.com/gilbertchen/duplicacy/releases/download/v2.7.2/duplicacy_linux_x64_2.7.2"
 GH_URL="https://ghproxy.com/"
