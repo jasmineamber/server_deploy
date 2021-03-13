@@ -9,11 +9,11 @@ DOCKER_DAEMON="https://raw.githubusercontent.com/jasmineamber/server_deploy/mast
 
 if [[ ! -z "$env" && $env == "china" ]]; then
   #  配置 docker registry-mirrors
-  wget ${GH_URL}+${DOCKER_DAEMON} -O /etc/docker/daemon.json
+  wget ${GH_URL}${DOCKER_DAEMON} -O /etc/docker/daemon.json
   #  duplicacy 下载地址
-  RELEASE_DUPLICACY=${GH_URL}+${REALSE_DUPLICACY}
+  RELEASE_DUPLICACY=${GH_URL}${REALSE_DUPLICACY}
   # docker compose 配置文件
-  DOCKER_COMPOSE=${GH_URL}+${DOCKER_COMPOSE}
+  DOCKER_COMPOSE=${GH_URL}${DOCKER_COMPOSE}
 fi
 
 # 下载duplicacy
