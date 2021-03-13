@@ -17,7 +17,7 @@ if [ [ ! -z $env && $env == 'china'] ]; then
 fi
 
 # 下载duplicacy
-wget RELEASE_DUPLICACY -O /usr/bin/duplicacy
+wget ${RELEASE_DUPLICACY} -O /usr/bin/duplicacy
 chmod +x /usr/bin/duplicacy
 
 # 配置onedriver token
