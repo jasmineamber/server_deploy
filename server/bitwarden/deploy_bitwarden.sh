@@ -7,7 +7,7 @@ GH_URL="https://ghproxy.com/"
 DOCKER_COMPOSE="https://raw.githubusercontent.com/jasmineamber/server_deploy/master/server/bitwarden/docker-compose.yml"
 DOCKER_DAEMON="https://raw.githubusercontent.com/jasmineamber/server_deploy/master/server/bitwarden/daemon.json"
 
-if [ [ ! -z "$env" && $env == 'china'] ]; then
+if [[ ! -z "$env" && $env == 'china']]; then
   #  配置 docker registry-mirrors
   wget ${GH_URL}+${DOCKER_DAEMON} -O /etc/docker/daemon.json
   #  duplicacy 下载地址
