@@ -60,7 +60,7 @@ duplicacy list | awk 'END{print $4}' | xargs duplicacy restore -r
 cd ..
 
 # 下载docker配置文件
-wget ${DOCKER_COMPOSE}
+wget -q ${DOCKER_COMPOSE} -O docker-compose.yml
 
 # 启动docker
 docker-compose up -d
