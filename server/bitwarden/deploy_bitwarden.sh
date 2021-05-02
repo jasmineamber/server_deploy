@@ -21,14 +21,24 @@ wget ${RELEASE_DUPLICACY} -O /usr/bin/duplicacy
 chmod +x /usr/bin/duplicacy
 
 # 配置onedriver token
-read -p "please input onedrive token: " onetoken
-onetoken_file=$(pwd)/one-token.json
-echo $onetoken >${onetoken_file}
+#read -p "please input onedrive token: " onetoken
+#onetoken_file=$(pwd)/one-token.json
+#echo $onetoken >${onetoken_file}
+
+# 坚果云WebDAV密码
+read -p "please input WebDAV password: " password
 
 # 初始化duplicacy
 mkdir bw-data
 cd bw-data
-if echo ${onetoken_file} | duplicacy init bitwarden one://Bitwarden; then
+# 使用one drive
+#if echo ${onetoken_file} | duplicacy init bitwarden one://Bitwarden; then
+#  echo "duplicacy init success"
+#else
+#  exit
+#fi
+# 使用坚果云
+if echo "${password}" | duplicacy init -storage-name bw-jianguo bitwarden webdav://juepinyouling@aliyun.com@dav.jianguoyun.com/dav/Bitwarden; then
   echo "duplicacy init success"
 else
   exit
@@ -38,7 +48,10 @@ fi
 echo "-icon_cache/" >.duplicacy/filters
 
 # 让duplicacy记住token路径
-duplicacy set -key one_token -value ${onetoken_file}
+#duplicacy set -key one_token -value ${onetoken_file}
+
+# 让duplicacy记住坚果云密码
+duplicacy set -key webdav_password -value "${password}"
 
 # 恢复数据
 duplicacy list | awk 'END{print $4}' | xargs duplicacy restore -r
